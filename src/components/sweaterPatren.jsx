@@ -10,6 +10,7 @@ import useImage from "use-image";
 import simpleSweater from "../assets/simpleSweater.png";
 import motif1 from "../assets/motif1.jpg";
 import { Lock, Unlock } from "lucide-react";
+import useWindowSize from "../hooks/useWindowSize"; // create this hook below
 
 export default function SweaterDesigner() {
   const transformerRef = useRef();
@@ -27,6 +28,10 @@ export default function SweaterDesigner() {
     width: 150,
     height: 150,
   };
+
+  const size = useWindowSize();
+  const stageWidth = Math.min(size.width - 32, 600); // 32px padding
+  const stageHeight = stageWidth; // keep square
 
   const [motifProps, setMotifProps] = useState(() => {
     const saved = localStorage.getItem("motifProps");
@@ -92,7 +97,7 @@ export default function SweaterDesigner() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+    <div className="min-h-screen  flex items-center justify-center bg-gray-100 px-4 py-8">
       <div className="text-center">
         <h2 className="text-xl font-bold mb-4">Sweater Designer</h2>
 
@@ -106,8 +111,8 @@ export default function SweaterDesigner() {
           </button>
 
           <Stage
-            width={600}
-            height={600}
+            width={stageWidth}
+            height={stageHeight}
             className="border border-gray-300 rounded-md"
           >
             <Layer>
