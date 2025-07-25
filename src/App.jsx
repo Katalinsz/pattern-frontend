@@ -1,4 +1,3 @@
-// App.jsx
 import Navbar from "./components/Navbar";
 import SweaterDesigner from "./components/sweaterPatren";
 
